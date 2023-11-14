@@ -11,18 +11,18 @@ import java.util.List;
 
 
 @Entity
-    @Data
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Table(name = "homes_table")
-    public class HomeEntity {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-        private String name, address;
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "homes_table")
+public class HomeEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name, address;
 
-        @OneToMany(mappedBy = "home",cascade = CascadeType.ALL)
-        private List<RoomEntity> rooms = new ArrayList<>();
-    }
+    @OneToMany(mappedBy = "home", cascade = CascadeType.ALL)
+    private List<RoomEntity> rooms = new ArrayList<>();
+}
 

@@ -1,12 +1,9 @@
 package com.homeservice.main.service;
 
-import com.homeservice.main.dto.Home;
 import com.homeservice.main.dto.jpa.entity.HomeEntity;
 import com.homeservice.main.dto.request.HomeRequest;
 
-import java.util.ArrayList;
 import java.util.Map;
-import java.util.Optional;
 
 public interface HomeService {
     HomeEntity post(HomeRequest homeRequest);

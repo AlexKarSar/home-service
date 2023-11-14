@@ -12,13 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Home {
+
     @NotBlank
     private String name;
+
     @Nullable
     private String address;
+
     @NotNull
     private Integer id;
-    public void create(HomeRequest homeRequest, Integer id){
+
+    public void create(HomeRequest homeRequest, Integer id) {
         this.id = id;
         this.address = homeRequest.getAddress();
         this.name = homeRequest.getName();
