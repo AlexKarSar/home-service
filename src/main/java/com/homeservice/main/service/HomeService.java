@@ -1,14 +1,21 @@
 package com.homeservice.main.service;
 
 import com.homeservice.main.dto.Home;
+import com.homeservice.main.dto.jpa.entity.HomeEntity;
 import com.homeservice.main.dto.request.HomeRequest;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Optional;
 
 public interface HomeService {
-    Home create(HomeRequest homeRequest);
-    Home get(Integer homeId);
-    ArrayList<Home> get();
-    Home put(HomeRequest HomeRequest, Integer id);
+    HomeEntity post(HomeRequest homeRequest);
+
+    HomeEntity put(HomeRequest homeRequest, Integer id);
+
+    HomeEntity get(Integer homeId);
+
+    Map<Integer, String> getHomes();
+
     void delete(Integer homeId);
 }

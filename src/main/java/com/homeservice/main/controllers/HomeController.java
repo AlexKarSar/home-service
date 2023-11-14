@@ -1,5 +1,6 @@
 package com.homeservice.main.controllers;
 import com.homeservice.main.dto.Home;
+import com.homeservice.main.dto.jpa.entity.HomeEntity;
 import com.homeservice.main.dto.request.HomeRequest;
 import com.homeservice.main.service.HomeService;
 import jakarta.validation.Valid;
@@ -9,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -21,24 +24,24 @@ public class HomeController {
    }
 
    @PostMapping("/api/homes")
-   public ResponseEntity<Home> createHome(@RequestBody @Valid HomeRequest homeRequest){
-      Home home = homeService.create(homeRequest);
+   public ResponseEntity<HomeEntity> createHome(@RequestBody @Valid HomeRequest homeRequest){
+      HomeEntity home = homeService.post(homeRequest);
       return ResponseEntity.ok(home);
    }
 
    @PutMapping("/api/homes/{homeId}")
-   public ResponseEntity<Home> editHouse(@RequestBody @Valid HomeRequest HomeRequest, @PathVariable int homeId){
+   public ResponseEntity<HomeEntity> editHouse(@RequestBody @Valid HomeRequest HomeRequest, @PathVariable Integer homeId){
       return ResponseEntity.ok(homeService.put(HomeRequest, homeId));
    }
 
    @GetMapping("/api/homes/{homeId}")
-   public ResponseEntity<Home> getHome(@PathVariable int homeId){
+   public ResponseEntity<HomeEntity> getHome(@PathVariable int homeId){
       return ResponseEntity.ok(homeService.get(homeId));
    }
 
    @GetMapping("/api/homes")
-   public ResponseEntity<ArrayList<Home>> getListOfHomes(){
-      return ResponseEntity.ok(homeService.get());
+   public ResponseEntity<Map<Integer, String>> getListOfHomes(){
+      return ResponseEntity.ok(homeService.getHomes());
    }
 
    @DeleteMapping("/api/homes/{homeId}")
